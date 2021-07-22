@@ -16,23 +16,46 @@ public class UserDaoTest
     {
 //        ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
         //XML을 사용해서 애플리케이션 테스트하기
-        ApplicationContext context = new GenericXmlApplicationContext("classpath:applicationContext.xml");
+        ApplicationContext context = new GenericXmlApplicationContext("applicationContext.xml");
         UserDao dao = context.getBean("userDao", UserDao.class);
 
         User user = new User();
-        user.setId("whiteship2");
+        user.setId("white");
         user.setName("백기선");
         user.setPassword("married");
 
         dao.add(user);
-
+//
         System.out.println(user.getId() + "등록성공");
 
         User user2 = dao.get(user.getId());
+
+        user2.setPassword("love");
+
+        /*
+        수정 전, 조회성공이라는 메시지는 get()메소드가
+        에러없이 끝났다는 의미일뿐
+
         System.out.println(user2.getName());
-        System.out.println(user.getPassword());
+        System.out.println(user2.getPassword());
 
         System.out.println(user2.getId() + "조회성공");
+
+         */
+
+        if (!user.getId().equals(user2.getId()))
+        {
+            System.out.println("테스트 실패(id)");
+        } else if (!user.getPassword().equals(user2.getPassword()))
+        {
+            System.out.println("테스트 실패(password)");
+        }
+        else
+        {
+            System.out.println("조회 테스트 성공");
+        }
+
+
 
     }
 }

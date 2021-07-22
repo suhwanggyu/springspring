@@ -12,7 +12,7 @@ public class DConnectionMaker implements ConnectionMaker
     @Override
     public Connection makeConnection() throws ClassNotFoundException, SQLException
     {
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         Connection c = DriverManager.getConnection(
                 "jdbc:mysql://localhost:1234/springbook", "root","6203"
         );

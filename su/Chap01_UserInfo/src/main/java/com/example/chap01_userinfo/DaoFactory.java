@@ -9,7 +9,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import javax.sql.DataSource;
-
+/*
+TODO 색이 바껴서 하는 것.
+ */
 @Configuration
 public class DaoFactory
 {
