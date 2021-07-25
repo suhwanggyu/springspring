@@ -6,25 +6,42 @@ import java.util.Scanner;
 public class FileGenerator {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Type key : ");
-        String key = scanner.nextLine();
-        System.out.println("Type cipherText : ");
-        String cipher = scanner.nextLine();
-        makeAnswer(key, cipher);
+
+        System.out.println("Type Mode : ");
+        System.out.println("1. Make cipher ");
+        System.out.println("2. Decode ");
+        int num = scanner.nextInt();
+        scanner.nextLine();
+        switch (num) {
+            case 1 :
+                System.out.println("Type key : (must 16 character)");
+                String keyValue = scanner.nextLine();
+                System.out.println("Type inputFile : ");
+                String fileName = scanner.nextLine();
+                makeCipher(keyValue, fileName);
+                break;
+            case 2 :
+                System.out.println("Type key : ");
+                String key = scanner.nextLine();
+                System.out.println("Type cipherText : ");
+                String cipher = scanner.nextLine();
+                System.out.println("Type outputFileName : ");
+                String outPutFileName = scanner.nextLine();
+                makeAnswer(key, cipher, outPutFileName);
+        }
     }
 
-    public static void makeCipher(String key) throws Exception {
-        String cipher = readFile("src/StreamExercise.java");
+    public static void makeCipher(String key, String fileName) throws Exception {
+        String cipher = readFile("src/" + fileName);
         AES256 aes256 = new AES256(key);
         String encrypt = aes256.encrypt(cipher);
-        writeFile(encrypt, "src/StreamCipher");
+        writeFile(encrypt, "src/Cipher");
     }
 
-    public static void makeAnswer(String key, String cipher) throws Exception {
+    public static void makeAnswer(String key, String cipher, String outPutFileName) throws Exception {
         AES256 aes256 = new AES256(key);
         String decrypt = aes256.decrypt(cipher);
-        System.out.println("decrypt = " + decrypt);
-        writeFile(decrypt, "src/StreamExercise.java");
+        writeFile(decrypt, "src/" + outPutFileName);
     }
 
     public static String readFile(String filename) throws Exception {
@@ -34,6 +51,7 @@ public class FileGenerator {
         String line;
         while ((line = reader.readLine()) != null) {
             builder.append(line);
+            builder.append("\n");
         }
         System.out.println(builder.toString());
         reader.close();
