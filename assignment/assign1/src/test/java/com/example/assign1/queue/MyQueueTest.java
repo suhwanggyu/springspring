@@ -25,4 +25,13 @@ public class MyQueueTest {
         int expectedValue = 1;
         assertThat(1).isEqualTo(expectedValue);
     }
+
+    @Test
+    void test_Pop() {
+        myQueue.add(1);
+        myQueue.add(2);
+
+        assertThat(1).isEqualTo(myQueue.pop());
+
+    }
 }
