@@ -1,5 +1,6 @@
 package com.example.assignmenttdd;
 
+import com.example.assignmenttdd.exception.NoElementException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,8 +19,6 @@ public class MakeQueueTest
     @DisplayName("큐가 비어있는지 확인하기")
     void checkIsEmpty()
     {
-        MakeQueueImpl q = new MakeQueueImpl(100, arr);
-        Assertions.assertThat(q.empty()).isEqualTo(true);
 
     }
 
@@ -27,7 +26,6 @@ public class MakeQueueTest
     @DisplayName("front 확인해보기")
     void checkFront()
     {
-
     }
 
     @Test
