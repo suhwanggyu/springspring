@@ -37,7 +37,7 @@ public class MakeQueueTest
         org.junit.jupiter.api.Assertions.assertTrue(true);
     }
 
-    /*
+
     @Test
     @DisplayName("front 확인해보기")
     public void checkFront()
@@ -53,7 +53,8 @@ public class MakeQueueTest
     @Test
     public void checkFull()
     {
-
+        //꽉 차있다는건 size가 100일때 테스트가 성공하도록
+        Assertions.assertThat(q.size()).isEqualTo(100);
     }
 
     @Test
@@ -74,6 +75,6 @@ public class MakeQueueTest
 
     }
 
-     */
+
 
 }
