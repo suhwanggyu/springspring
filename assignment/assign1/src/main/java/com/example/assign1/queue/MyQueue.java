@@ -1,9 +1,9 @@
 package com.example.assign1.queue;
 
-public class MyQueue<T> implements Queue{
+public class MyQueue implements Queue{
 
-    private Node<T> first;
-    private Node<T> last;
+    private Node first;
+    private Node last;
 
     @Override
     public void add(Integer value) {

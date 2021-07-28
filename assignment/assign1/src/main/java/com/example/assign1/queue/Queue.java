@@ -7,4 +7,5 @@ public interface Queue {
     boolean empty();
     int size();
     Integer front();
+    int getFirst();
 }

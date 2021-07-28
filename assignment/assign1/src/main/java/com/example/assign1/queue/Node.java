@@ -1,27 +1,27 @@
 package com.example.assign1.queue;
 
-public class Node<T> {
+public class Node {
 
-    private T data;
-    private Node<T> nextNode;
+    private int data;
+    private Node nextNode;
 
-    public Node(T data) {
+    public Node(int data) {
         this.data = data;
     }
 
-    public T getData() {
+    public int getData() {
         return data;
     }
 
-    public void setData(T data) {
+    public void setData(int data) {
         this.data = data;
     }
 
-    public Node<T> getNextNode() {
+    public Node getNextNode() {
         return nextNode;
     }
 
-    public void setNextNode(Node<T> nextNode) {
+    public void setNextNode(Node nextNode) {
         this.nextNode = nextNode;
     }
 }
