@@ -39,7 +39,7 @@ public class MakeQueueImpl implements MakeQueue
         q.remove(popValue);
         /**
          * 이거테스트 무조건해보기 인덱스가 떨어지는지 값이 떨어지는지
-         *
+         * 지금 TDD를 사용안하고있음.
          */
         return popValue;
     }
@@ -60,7 +60,14 @@ public class MakeQueueImpl implements MakeQueue
     @Override
     public boolean empty()
     {
-        return front == rear;
+        if (front() == null && rear() == null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /*
@@ -69,7 +76,8 @@ public class MakeQueueImpl implements MakeQueue
     @Override
     public int size()
     {
-        return front - rear;
+//        return front - rear;
+        return rear - front;
     }
 
     @Override
