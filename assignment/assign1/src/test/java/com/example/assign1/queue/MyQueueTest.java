@@ -32,6 +32,5 @@ public class MyQueueTest {
         myQueue.add(2);
 
         assertThat(1).isEqualTo(myQueue.pop());
-
     }
 }

@@ -1,5 +1,7 @@
 package com.example.assign1.queue;
 
+import com.example.assign1.exception.NoElementException;
+
 public class MyQueue implements Queue{
 
     private Node first;
@@ -24,8 +26,15 @@ public class MyQueue implements Queue{
     }
 
     @Override
-    public Integer pop() {
-        return null;
+    public Integer pop() throws NoElementException {
+        if (first == null) {
+            throw new NoElementException("Queue is empty");
+        }
+
+        int data = first.getData();
+        first = first.getNextNode();
+
+        return data;
     }
 
     @Override
