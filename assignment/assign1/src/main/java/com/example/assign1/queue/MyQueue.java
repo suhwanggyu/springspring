@@ -19,6 +19,11 @@ public class MyQueue<T> implements Queue{
     }
 
     @Override
+    public int getFirst() {
+        return first.getData();
+    }
+
+    @Override
     public Integer pop() {
         return null;
     }
