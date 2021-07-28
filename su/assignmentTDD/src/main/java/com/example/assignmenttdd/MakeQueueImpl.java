@@ -33,7 +33,14 @@ public class MakeQueueImpl implements MakeQueue
     @Override
     public boolean full()
     {
-        return false;
+        if (rear == 99)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     @Override
