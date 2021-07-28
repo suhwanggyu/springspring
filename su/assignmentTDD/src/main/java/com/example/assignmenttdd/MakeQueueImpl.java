@@ -39,7 +39,7 @@ public class MakeQueueImpl implements MakeQueue
     @Override
     public boolean empty()
     {
-        return 1 == 1;
+        return front == rear;
     }
 
     /*
