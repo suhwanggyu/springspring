@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class MakeQueueTest
 {
     ArrayList<Integer> arr = new ArrayList<>();
-    QueueImpl q = new QueueImpl(100, arr);
+    MakeQueueImpl q = new MakeQueueImpl(100, arr);
 
 
     @Test
@@ -27,7 +27,22 @@ public class MakeQueueTest
         근데 이게 왜 성공하는 거죠????size를 구현을 안했는데...먼저
         size를 구현해야지 이게 말이 될거같은데요...
         아 해결했습니다. size가 return을 0을 하고 있군요.
+        그래도 이 방법은 틀린 테스트 방법인거 같다.
          */
     }
 
+    @Test
+    @DisplayName("front 확인해보기")
+    void checkFront()
+    {
+        if (q.front() == 0)
+        {
+            Assertions.assertThat(4545);
+        }
+        else
+        {
+            Assertions.assertThat(4545);
+
+        }
+    }
 }
