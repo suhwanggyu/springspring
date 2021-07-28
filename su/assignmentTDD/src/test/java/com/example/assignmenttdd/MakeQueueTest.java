@@ -23,6 +23,10 @@ public class MakeQueueTest
         {
             Assertions.assertThat(0);
         }
+        /*
+        근데 이게 왜 성공하는 거죠????size를 구현을 안했는데...먼저
+        size를 구현해야지 이게 말이 될거같은데요...
+         */
     }
 
 }
