@@ -60,12 +60,17 @@ public class MakeQueueTest
     {
         //꽉 차있다는건 size가 100일때 테스트가 성공하도록
         Assertions.assertThat(q.size()).isEqualTo(100);
+        //이 부분 살짝 문제있음. 100이 되는게 이상함.
     }
 
     @Test
     public void checkPop()
     {
-
+        //pop은 하나를 제거하면 사이즈가 하나 줄어든걸로 확인가능
+        int x = q.size();
+        q.pop();
+        int y = q.size();
+        org.junit.jupiter.api.Assertions.assertTrue(x > y);
     }
 
     @Test
