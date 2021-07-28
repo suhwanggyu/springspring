@@ -1,0 +1,28 @@
+package com.example.assignmenttdd;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.ArrayList;
+
+
+@SpringBootTest
+public class MakeQueueTest
+{
+    ArrayList<Integer> arr = new ArrayList<>();
+    QueueImpl q = new QueueImpl(100, arr);
+
+
+    @Test
+    @DisplayName("큐가 비어있는지 확인하기")
+    void checkIsEmpty()
+    {
+        if (q.size() == 0)
+        {
+            Assertions.assertThat(0);
+        }
+    }
+
+}
