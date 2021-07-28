@@ -34,6 +34,7 @@ public class MakeQueueTest
     public void checkIsEmpty()
     {
         //큐가 비어있는지 확인하려면 empty()했을때 true이면된다.
+        //성공
         org.junit.jupiter.api.Assertions.assertTrue(true);
     }
 
@@ -70,6 +71,10 @@ public class MakeQueueTest
     @Test
     public void checkSize()
     {
+        //두개 집어넣었을 때, rear값이 올라가니, 차이가 2차이가 늘어나는지 확인
+        q.add(3);
+        q.add(58);
+        assertThat(q.size()).isEqualTo(2);
 
     }
 

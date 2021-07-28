@@ -21,7 +21,7 @@ public class MakeQueueImpl implements MakeQueue
     @Override
     public void add(Integer value)
     {
-
+        arr.add(value);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class MakeQueueImpl implements MakeQueue
     @Override
     public int size()
     {
-        return 0;
+        return front - rear;
     }
 
     @Override
