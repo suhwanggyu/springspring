@@ -6,8 +6,8 @@ public class MakeQueueImpl implements MakeQueue
 {
     private int MAXSIZE = 100;
     private ArrayList<Integer> q = new ArrayList<>();
-    private int front;
-    private int rear;
+    private int front; //pop할때 참조할 인덱스
+    private int rear; // push할때 참조할 인덱스
 
     public MakeQueueImpl(int MAXSIZE, ArrayList<Integer> q)
     {

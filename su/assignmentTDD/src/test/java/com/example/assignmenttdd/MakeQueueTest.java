@@ -8,52 +8,58 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 @SpringBootTest
 public class MakeQueueTest
 {
+    /*
+    인터페이스만 바라본다고 생각하기
+     */
     ArrayList<Integer> arr = new ArrayList<>();
     MakeQueueImpl q = new MakeQueueImpl(100, arr);
 
     @Test
     @DisplayName("큐가 비어있는지 확인하기")
-    void checkIsEmpty()
+    public boolean checkIsEmpty()
     {
-
+        //큐가 비어있는지 확인하려면 empty()했을때 true이면된다.
+        assertThat(q).isEqualTo(true);
     }
 
     @Test
     @DisplayName("front 확인해보기")
-    void checkFront()
+    public void checkFront()
     {
     }
 
     @Test
-    void checkAdd()
-    {
-
-    }
-
-    @Test
-    void checkFull()
+    public void checkAdd()
     {
 
     }
 
     @Test
-    void checkPop()
+    public void checkFull()
     {
 
     }
 
     @Test
-    void checkSize()
+    public void checkPop()
     {
 
     }
 
     @Test
-    void checkRear()
+    public void checkSize()
+    {
+
+    }
+
+    @Test
+    public void checkRear()
     {
 
     }
