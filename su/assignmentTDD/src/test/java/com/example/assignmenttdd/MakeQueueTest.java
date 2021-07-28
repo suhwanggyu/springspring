@@ -47,7 +47,11 @@ public class MakeQueueTest
     @Test
     public void checkAdd()
     {
-
+        //add는 하나를 넣었으면 그전꺼보다 사이즈가 하나 늘어나 있어야함.
+        int x = q.size();
+        q.add(1);
+        int y = q.size();
+        org.junit.jupiter.api.Assertions.assertTrue(x < y);
     }
 
     @Test
