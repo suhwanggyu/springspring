@@ -19,13 +19,13 @@ public class MakeQueueTest
     인터페이스만 바라본다고 생각하기
      */
 
-    ArrayList<Integer> arr;
+//    ArrayList<Integer> arr;
     MakeQueueImpl q;
 
     @Before
     void before()
     {
-        arr = new ArrayList<>();
+//        arr = new ArrayList<>();
         q = new MakeQueueImpl();
     }
 
