@@ -74,6 +74,7 @@ public class MakeQueueImpl implements MakeQueue
     /*
     현재 담담 요소의 개수
      */
+    //
 
     @Override
     public int size()
