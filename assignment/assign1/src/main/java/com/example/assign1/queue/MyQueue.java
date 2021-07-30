@@ -21,11 +21,6 @@ public class MyQueue implements Queue{
     }
 
     @Override
-    public int getFirst() {
-        return first.getData();
-    }
-
-    @Override
     public Integer pop() throws NoElementException {
         if (first == null) {
             throw new NoElementException("Queue is empty");
