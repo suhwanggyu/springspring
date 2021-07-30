@@ -49,4 +49,12 @@ public class MyQueueTest {
 
         assertThat(2).isEqualTo(myQueue.size());
     }
+
+    @Test
+    void test_Is_Full() {
+        for (int i = 0; i < 100; i++) {
+            myQueue.add(i);
+        }
+        assertThat(myQueue.full()).isEqualTo(true);
+    }
 }
