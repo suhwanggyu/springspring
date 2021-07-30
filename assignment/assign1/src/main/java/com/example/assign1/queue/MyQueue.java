@@ -49,6 +49,6 @@ public class MyQueue implements Queue{
 
     @Override
     public Integer front() {
-        return null;
+        return first.getData();
     }
 }
