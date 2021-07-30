@@ -1,6 +1,7 @@
 package com.example.assign1.queue;
 
 import com.example.assign1.exception.NoElementException;
+import com.example.assign1.exception.NoEnoughSpaceException;
 
 public class MyQueue implements Queue{
 
@@ -38,8 +39,8 @@ public class MyQueue implements Queue{
     }
 
     @Override
-    public boolean full() {
-        return false;
+    public boolean full() throws NoEnoughSpaceException {
+        return (size >= QUEUE_SIZE) ? true : false;
     }
 
     @Override
