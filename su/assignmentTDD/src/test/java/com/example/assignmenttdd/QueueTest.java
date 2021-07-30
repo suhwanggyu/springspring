@@ -35,6 +35,12 @@ public class QueueTest {
 
     @Test
     public void Empty_EmptyQueue_True() {
+        for (int i = 0; i < 100; i++) {
+            q.add((int)(Math.random() * 101 + 1));
+        }
+        for (int i = 0; i < 100; i++) {
+            q.pop();
+        }
         assertTrue(q.empty());
     }
 
@@ -43,6 +49,7 @@ public class QueueTest {
         q.add(2);
         assertFalse(q.empty());
     }
+
 
     @Test
     public void Pop_ExecutePopWhenQIsEmpty_ThrowsNoElementException() {
@@ -73,6 +80,7 @@ public class QueueTest {
     }
 
     @Test
+    public void Add_
 
 
 
