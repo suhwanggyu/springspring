@@ -68,4 +68,12 @@ public class QueueImpl implements Queue {
         return this.q[front];
     }
 
+    public static void main(String[] args) {
+        QueueImpl q = new QueueImpl();
+        for (int i = 0; i < 90; i++) {
+            q.add((int) Math.random() * 100 + 1);
+        }
+        System.out.println("q.size = " + q.size);
+    }
+
 }
