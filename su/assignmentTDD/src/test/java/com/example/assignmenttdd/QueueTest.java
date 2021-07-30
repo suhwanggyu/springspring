@@ -1,6 +1,7 @@
 package com.example.assignmenttdd;
 
 import com.example.assignmenttdd.exception.NoElementException;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +12,7 @@ public class QueueTest {
 
     @Before
     public void before() {
-        q = new QueueImpl(2);
+        q = new QueueImpl(100);
     }
 
     @Test
