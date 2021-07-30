@@ -1,6 +1,7 @@
 package com.example.assignmenttdd;
 
 import com.example.assignmenttdd.exception.NoElementException;
+import com.example.assignmenttdd.exception.NoEnoughSpaceException;
 
 public class QueueImpl implements Queue {
     private static final int MAXSIZE = 100;
@@ -20,6 +21,9 @@ public class QueueImpl implements Queue {
 
     @Override
     public void add(Integer value) {
+        if (full()) {
+            throw new NoEnoughSpaceException("큐가 꽉 차있습닠다.");
+        }
     }
 
     @Override
@@ -31,6 +35,10 @@ public class QueueImpl implements Queue {
 
     @Override
     public boolean full() {
+        int N = rear - front;
+        if (N == -1 || N == MAXSIZE - 1) {
+            return true;
+        }
         return false;
     }
 
