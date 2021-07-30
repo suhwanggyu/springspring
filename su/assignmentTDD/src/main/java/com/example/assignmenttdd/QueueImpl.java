@@ -58,7 +58,11 @@ public class QueueImpl implements Queue {
 
     @Override
     public int size() {
-        return 0;
+        if (rear > front) {
+            return rear - front;
+        } else {
+            return 100 - front + rear;
+        }
     }
 
     @Override
