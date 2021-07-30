@@ -1,15 +1,28 @@
 package com.example.assignmenttdd;
 
 public class QueueImpl implements Queue {
+    private static final int MAXSIZE = 100;
+
+    private int[] q;
+    private int front;
+    private int rear;
+    private int size;
+
+    public QueueImpl() {
+        this.q = new int[MAXSIZE];
+        this.front = 0;
+        this.rear = 0;
+        this.size = 0;
+    }
+
 
     @Override
     public void add(Integer value) {
-
     }
 
     @Override
     public Integer pop() {
-        return null;
+
     }
 
     @Override
@@ -19,7 +32,7 @@ public class QueueImpl implements Queue {
 
     @Override
     public boolean empty() {
-        return false;
+        return front == rear;
     }
 
     @Override
@@ -36,4 +49,6 @@ public class QueueImpl implements Queue {
     public Integer rear() {
         return null;
     }
+
+
 }

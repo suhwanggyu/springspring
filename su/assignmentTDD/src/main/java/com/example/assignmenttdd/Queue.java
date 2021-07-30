@@ -5,13 +5,14 @@ public interface Queue {
 
     Integer pop();
 
-    boolean full(); //꽉 차 있는지 확인
+    boolean full();
 
-    boolean empty(); //비어있는지
+    boolean empty();
 
-    int size(); //지금 들어가있는 데이터의 수
+    int size();
 
-    Integer front(); //pop할 떄 참조할 것
+    Integer front();
 
-    Integer rear(); //push할 때 참조할 것
+    Integer rear();
+
 }
