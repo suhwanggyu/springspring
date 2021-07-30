@@ -33,4 +33,12 @@ public class MyQueueTest {
 
         assertThat(1).isEqualTo(myQueue.pop());
     }
+
+    @Test
+    void test_Front() {
+        myQueue.add(1);
+        myQueue.add(2);
+
+        assertThat(1).isEqualTo(myQueue.front());
+    }
 }
