@@ -15,6 +15,8 @@ public class MyQueue implements Queue{
     public void add(Integer value) {
         Node newData = new Node(value);
 
+        if (size >= QUEUE_SIZE)
+            throw new NoEnoughSpaceException("Queue is full!");
         if (first == null) {
             first = newData;
             last = first;
@@ -23,12 +25,13 @@ public class MyQueue implements Queue{
             last = newData;
         }
         size++;
+
     }
 
     @Override
     public Integer pop() throws NoElementException {
         if (first == null) {
-            throw new NoElementException("Queue is empty");
+            throw new NoElementException("Queue is empty!");
         } else {
             int data = first.getData();
             first = first.getNextNode();

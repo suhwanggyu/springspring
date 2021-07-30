@@ -22,9 +22,18 @@ public class MyQueueTest {
     @Test
     void test_Add() {
         myQueue.add(1);
-        int expectedValue = 1;
-        assertThat(1).isEqualTo(expectedValue);
+        myQueue.add(2);
+
+        assertThat(1).isEqualTo(myQueue.front());
     }
+
+//    @Test
+//    void test_If_Size_Over() {
+//        for (int i = 0; i < 101; i++) {
+//            myQueue.add(i);
+//        }
+//        assertThat(myQueue.size()).isEqualTo(100);
+//    }
 
     @Test
     void test_Pop() {
