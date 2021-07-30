@@ -54,6 +54,17 @@ public class QueueTest {
         assertThrows(NoElementException.class, () -> q.front());
     }
 
+    @Test
+    public void Full_QueueSizeIs100_True() {
+        assertTrue(q.full());
+    }
+
+    @Test
+    public void Full_QueueSizeLessThan100_False() {
+        assertFalse(q.full());
+    }
+
+
 
 
 
