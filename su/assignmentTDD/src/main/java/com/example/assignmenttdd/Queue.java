@@ -1,7 +1,7 @@
 package com.example.assignmenttdd;
 
 public interface Queue {
-    void add(Integer value);
+    void add(Integer value) throws Exception;
 
     Integer pop();
 

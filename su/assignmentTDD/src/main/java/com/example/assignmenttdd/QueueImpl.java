@@ -20,17 +20,26 @@ public class QueueImpl implements Queue {
 
 
     @Override
-    public void add(Integer value) {
+    public void add(Integer value) throws Exception {
         if (full()) {
             throw new NoEnoughSpaceException("큐가 꽉 차있습닠다.");
+        } else {
+            q[rear] = value;
+            rear = (rear + 1) % 100;
         }
     }
 
     @Override
     public Integer pop() {
+        int x;
         if (empty()) {
             throw new NoElementException("큐가 비었습니다.");
+        } else {
+            x = q[front];
+            q[front] = Integer.parseInt(null);
+            front = (front + 1) % 100;
         }
+        return x;
     }
 
     @Override
@@ -57,6 +66,10 @@ public class QueueImpl implements Queue {
         if (empty()) {
             throw new NoElementException("큐가 비었습니다.");
         }
+        /*
+        front()랑 pop()이랑 큐니까 같은 메소드 아닌가요?
+         */
+
     }
 
     @Override
