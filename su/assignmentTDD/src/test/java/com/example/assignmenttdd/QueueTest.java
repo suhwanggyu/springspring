@@ -79,6 +79,11 @@ public class QueueTest {
         assertFalse(q.full());
     }
 
+    @Test
+    public void Front_InsertNum_FrontNumOfQueueIsSame() {
+        q.add(32);
+        assertEquals(32, q.front());
+    }
 
 
 

@@ -20,7 +20,7 @@ public class QueueImpl implements Queue {
 
 
     @Override
-    public void add(Integer value) throws Exception {
+    public void add(Integer value) {
         if (full()) {
             throw new NoEnoughSpaceException("큐가 꽉 차있습닠다.");
         } else {
@@ -62,13 +62,19 @@ public class QueueImpl implements Queue {
     }
 
     @Override
-    public Integer front() {
+    public Integer front(){
+        int numOfFront;
         if (empty()) {
             throw new NoElementException("큐가 비었습니다.");
         }
         /*
         front()랑 pop()이랑 큐니까 같은 메소드 아닌가요?
+        다르다면 peek()같은 역할로하는 걸로 구현했습니다.
          */
+        else {
+            numOfFront = q[0];
+        }
+        return numOfFront;
 
     }
 
