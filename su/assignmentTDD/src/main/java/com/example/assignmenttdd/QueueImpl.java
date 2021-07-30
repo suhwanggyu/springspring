@@ -11,10 +11,10 @@ public class QueueImpl implements Queue {
     private int rear = 0;
     private int capacity;
 
-    public QueueImpl(int capacity) {
-        this.capacity = capacity;
-        this.q = new int[capacity];
-    }
+//    public QueueImpl(int capacity) {
+//        this.capacity = capacity;
+//        this.q = new int[capacity];
+//    }
 
     public QueueImpl() {
         this.capacity = MAXSIZE;
@@ -66,30 +66,6 @@ public class QueueImpl implements Queue {
             throw new NoElementException("큐가 비었습니다.");
         }
         return this.q[front];
-    }
-
-    public static void main(String[] args) {
-        Queue q = new QueueImpl();
-        for (int i = 0; i < 90; i++) {
-            q.add((int) Math.random() * 100 + 1);
-        }
-        System.out.println("q.size = " + q.size());
-
-        for (int i = 0; i < 30; i++) {
-            q.pop();
-        }
-        System.out.println("q.size = " + q.size());
-
-        for (int i = 0; i < 100; i++) {
-            q.pop();
-        }
-        System.out.println("q.size() = " + q.size());
-
-        for (int j = 0; j < 200; j++) {
-            q.add(60);
-        }
-        System.out.println("q.size() = " + q.size());
-
     }
 
 }
