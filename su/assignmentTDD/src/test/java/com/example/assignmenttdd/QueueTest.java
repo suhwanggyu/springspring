@@ -24,7 +24,7 @@ public class QueueTest {
     }
 
     @Test
-    public void Add_InsetNumsCount_ExpectedNumsCount() {
+    public void Add_InsertNumsCount_ExpectedNumsCount() {
         int x = q.size();
         for (int i = 0; i < 3; i++) {
             q.add((int)(Math.random() * 100 + 1));
@@ -56,13 +56,25 @@ public class QueueTest {
 
     @Test
     public void Full_QueueSizeIs100_True() {
+        for (int i = 0; i < 100; i++) {
+            q.add((int)(Math.random() * 101 + 1));
+        }
         assertTrue(q.full());
     }
 
     @Test
     public void Full_QueueSizeLessThan100_False() {
+        for (int i = 0; i < 100; i++) {
+            q.add((int)(Math.random() * 101 + 1));
+        }
+        q.pop();
+        q.pop();
         assertFalse(q.full());
     }
+
+    @Test
+
+
 
 
 
