@@ -1,7 +1,6 @@
 package com.example.assignmenttdd;
 
 import com.example.assignmenttdd.exception.NoElementException;
-import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +11,7 @@ public class QueueTest {
 
     @Before
     public void before() {
-        q = new QueueImpl();
+        q = new QueueImpl(100);
     }
 
     @Test
@@ -27,7 +26,7 @@ public class QueueTest {
     public void Add_InsertNumsCount_ExpectedNumsCount() {
         int x = q.size();
         for (int i = 0; i < 3; i++) {
-            q.add((int)(Math.random() * 100 + 1));
+            q.add((int) (Math.random() * 100 + 1));
         }
         int y = q.size();
         assertTrue(x < y);
@@ -36,7 +35,7 @@ public class QueueTest {
     @Test
     public void Empty_EmptyQueue_True() {
         for (int i = 0; i < 100; i++) {
-            q.add((int)(Math.random() * 101 + 1));
+            q.add((int) (Math.random() * 101 + 1));
         }
         for (int i = 0; i < 100; i++) {
             q.pop();
@@ -64,7 +63,7 @@ public class QueueTest {
     @Test
     public void Full_QueueSizeIs100_True() {
         for (int i = 0; i < 100; i++) {
-            q.add((int)(Math.random() * 101 + 1));
+            q.add((int) (Math.random() * 101 + 1));
         }
         assertTrue(q.full());
     }
@@ -72,7 +71,7 @@ public class QueueTest {
     @Test
     public void Full_QueueSizeLessThan100_False() {
         for (int i = 0; i < 100; i++) {
-            q.add((int)(Math.random() * 101 + 1));
+            q.add((int) (Math.random() * 101 + 1));
         }
         q.pop();
         q.pop();
@@ -92,17 +91,6 @@ public class QueueTest {
         q.add(12);
         assertEquals(3, q.size());
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

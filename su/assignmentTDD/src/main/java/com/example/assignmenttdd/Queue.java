@@ -1,9 +1,9 @@
 package com.example.assignmenttdd;
 
 public interface Queue {
-    void add(Integer value) ;
+    void add(Integer value);
 
-    Integer pop() ;
+    Integer pop();
 
     boolean full();
 
@@ -11,7 +11,7 @@ public interface Queue {
 
     int size();
 
-    Integer front() ;
+    Integer front();
 
     Integer rear();
 

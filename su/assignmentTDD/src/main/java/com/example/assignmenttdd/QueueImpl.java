@@ -5,17 +5,17 @@ import com.example.assignmenttdd.exception.NoEnoughSpaceException;
 
 public class QueueImpl implements Queue {
     private static final int MAXSIZE = 100;
-
+    private int size;
     private int[] q;
     private int front;
     private int rear;
-    private int size;
 
-    public QueueImpl() {
-        this.q = new int[MAXSIZE];
-        this.front = 0;
-        this.rear = 0;
-        this.size = 0;
+    public QueueImpl(int size) {
+        this.size = size;
+        this.q = new int[size];
+        this.front = -1;
+        this.rear = -2;
+
     }
 
 
@@ -24,8 +24,8 @@ public class QueueImpl implements Queue {
         if (full()) {
             throw new NoEnoughSpaceException("큐가 꽉 차있습닠다.");
         } else {
+            rear = (rear + 1) % size;
             q[rear] = value;
-            rear = (rear + 1) % 100;
         }
     }
 
@@ -35,25 +35,27 @@ public class QueueImpl implements Queue {
         if (empty()) {
             throw new NoElementException("큐가 비었습니다.");
         } else {
+            front = (front + 1) % size;
             x = q[front];
             q[front] = Integer.parseInt(null);
-            front = (front + 1) % 100;
         }
         return x;
     }
 
     @Override
     public boolean full() {
-        int N = rear - front;
-        if (N == -1 || N == MAXSIZE - 1) {
-            return true;
-        }
-        return false;
+//        int d = rear - front;
+//        if (d == -1 || d == N - 1) {
+//            return true;
+//        }
+//        return false;
+        return ((rear + 1) % this.size == front);
+
     }
 
     @Override
     public boolean empty() {
-        return front == rear;
+        return (front == rear) ? true : false;
     }
 
     @Override
@@ -61,12 +63,12 @@ public class QueueImpl implements Queue {
         if (rear > front) {
             return rear - front;
         } else {
-            return 100 - front + rear;
+            return size - front + rear;
         }
     }
 
     @Override
-    public Integer front(){
+    public Integer front() {
         int numOfFront;
         if (empty()) {
             throw new NoElementException("큐가 비었습니다.");
@@ -76,15 +78,19 @@ public class QueueImpl implements Queue {
         다르다면 peek()같은 역할로하는 걸로 구현했습니다.
          */
         else {
-            numOfFront = q[0];
+            return q[(front + 1) % size];
         }
-        return numOfFront;
-
     }
 
     @Override
     public Integer rear() {
-        return null;
+        int numOftail;
+        if (empty()) {
+            throw new NoElementException("큐가 비었습니다.");
+        } else {
+            numOftail = q[-1];
+        }
+        return numOftail;
     }
 
 
