@@ -45,7 +45,7 @@ public class MyQueue implements Queue{
 
     @Override
     public boolean empty() {
-        return false;
+        return (size == 0) ? true : false;
     }
 
     @Override
