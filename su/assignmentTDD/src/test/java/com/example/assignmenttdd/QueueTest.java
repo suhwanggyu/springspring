@@ -11,7 +11,7 @@ public class QueueTest {
 
     @Before
     public void before() {
-        q = new QueueImpl(100);
+        q = new QueueImpl(2);
     }
 
     @Test

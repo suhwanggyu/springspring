@@ -13,6 +13,4 @@ public interface Queue {
 
     Integer front();
 
-    Integer rear();
-
 }
