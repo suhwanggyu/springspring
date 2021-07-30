@@ -40,3 +40,8 @@ Integer front()
 오류나 이전 단계 수정시에도 항상 고치고 커밋 수행
 
 
+Task2
+------
+
+annotation 정리하기
+markdown 문서 하나 만들어서 2장에 등장하는 모든 annotation 정리
