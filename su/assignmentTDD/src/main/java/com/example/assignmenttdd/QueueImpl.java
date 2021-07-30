@@ -69,11 +69,27 @@ public class QueueImpl implements Queue {
     }
 
     public static void main(String[] args) {
-        QueueImpl q = new QueueImpl();
+        Queue q = new QueueImpl();
         for (int i = 0; i < 90; i++) {
             q.add((int) Math.random() * 100 + 1);
         }
-        System.out.println("q.size = " + q.size);
+        System.out.println("q.size = " + q.size());
+
+        for (int i = 0; i < 30; i++) {
+            q.pop();
+        }
+        System.out.println("q.size = " + q.size());
+
+        for (int i = 0; i < 100; i++) {
+            q.pop();
+        }
+        System.out.println("q.size() = " + q.size());
+
+        for (int j = 0; j < 200; j++) {
+            q.add(60);
+        }
+        System.out.println("q.size() = " + q.size());
+
     }
 
 }
