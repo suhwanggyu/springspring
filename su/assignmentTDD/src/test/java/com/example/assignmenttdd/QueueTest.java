@@ -85,6 +85,14 @@ public class QueueTest {
         assertEquals(32, q.front());
     }
 
+    @Test
+    public void Size_CountOfUsingAddMethod_CountOfElementsInQueue() {
+        q.add(32);
+        q.add(88);
+        q.add(12);
+        assertEquals(3, q.size());
+    }
+
 
 
 
