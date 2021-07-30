@@ -41,4 +41,12 @@ public class MyQueueTest {
 
         assertThat(1).isEqualTo(myQueue.front());
     }
+
+    @Test
+    void test_Size() {
+        myQueue.add(1);
+        myQueue.add(2);
+
+        assertThat(2).isEqualTo(myQueue.size());
+    }
 }
