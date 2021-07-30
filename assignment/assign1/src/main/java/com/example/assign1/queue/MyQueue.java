@@ -4,8 +4,11 @@ import com.example.assign1.exception.NoElementException;
 
 public class MyQueue implements Queue{
 
+    static final int QUEUE_SIZE = 100;
+
     private Node first;
     private Node last;
+    private int size = 0;
 
     @Override
     public void add(Integer value) {
@@ -18,18 +21,20 @@ public class MyQueue implements Queue{
             last.setNextNode(newData);
             last = newData;
         }
+        size++;
     }
 
     @Override
     public Integer pop() throws NoElementException {
         if (first == null) {
             throw new NoElementException("Queue is empty");
+        } else {
+            int data = first.getData();
+            first = first.getNextNode();
+            size--;
+
+            return data;
         }
-
-        int data = first.getData();
-        first = first.getNextNode();
-
-        return data;
     }
 
     @Override
@@ -44,7 +49,7 @@ public class MyQueue implements Queue{
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
