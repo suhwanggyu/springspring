@@ -57,4 +57,12 @@ public class MyQueueTest {
         }
         assertThat(myQueue.full()).isEqualTo(true);
     }
+
+    @Test
+    void test_Is_Empty() {
+        myQueue.add(1);
+        myQueue.pop();
+
+        assertThat(myQueue.empty()).isEqualTo(true);
+    }
 }
