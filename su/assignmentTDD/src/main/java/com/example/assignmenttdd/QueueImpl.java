@@ -1,5 +1,7 @@
 package com.example.assignmenttdd;
 
+import com.example.assignmenttdd.exception.NoElementException;
+
 public class QueueImpl implements Queue {
     private static final int MAXSIZE = 100;
 
@@ -22,7 +24,9 @@ public class QueueImpl implements Queue {
 
     @Override
     public Integer pop() {
-
+        if (empty()) {
+            throw new NoElementException("큐가 비었습니다.");
+        }
     }
 
     @Override
@@ -42,7 +46,9 @@ public class QueueImpl implements Queue {
 
     @Override
     public Integer front() {
-        return null;
+        if (empty()) {
+            throw new NoElementException("큐가 비었습니다.");
+        }
     }
 
     @Override

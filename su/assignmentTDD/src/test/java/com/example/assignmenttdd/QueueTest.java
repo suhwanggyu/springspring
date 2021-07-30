@@ -1,5 +1,6 @@
 package com.example.assignmenttdd;
 
+import com.example.assignmenttdd.exception.NoElementException;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -42,6 +43,18 @@ public class QueueTest {
         q.add(2);
         assertFalse(q.empty());
     }
+
+    @Test
+    public void Pop_ExecutePopWhenQIsEmpty_ThrowsNoElementException() {
+        assertThrows(NoElementException.class, () -> q.pop());
+    }
+
+    @Test
+    public void Front_ExecuteFrontWhenQIsEmpty_ThrowsNoElementException() {
+        assertThrows(NoElementException.class, () -> q.front());
+    }
+
+
 
 
 
