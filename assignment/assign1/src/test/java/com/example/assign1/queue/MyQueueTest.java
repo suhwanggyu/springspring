@@ -76,7 +76,7 @@ public class MyQueueTest {
             myQueue.add(i);
         }
 
-        assertEquals(myQueue.full(), true);
+        assertTrue(myQueue.full());
     }
 
     @Test
@@ -84,6 +84,6 @@ public class MyQueueTest {
         myQueue.add(1);
         myQueue.pop();
 
-        assertEquals(myQueue.empty(), true);
+        assertTrue(myQueue.empty());
     }
 }
