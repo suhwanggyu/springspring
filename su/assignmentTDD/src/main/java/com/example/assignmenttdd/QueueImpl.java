@@ -9,45 +9,35 @@ public class QueueImpl implements Queue {
     private int[] q;
     private int front = 0;
     private int rear = 0;
-    private int capacity;
-
-//    public QueueImpl(int capacity) {
-//        this.capacity = capacity;
-//        this.q = new int[capacity];
-//    }
 
     public QueueImpl() {
-        this.capacity = MAXSIZE;
-        this.q = new int[capacity];
+        this.q = new int[MAXSIZE];
     }
 
     @Override
     public void add(Integer value) {
         if (full()) {
-            throw new NoEnoughSpaceException("큐가 꽉 차있습닠다.");
+            throw new NoEnoughSpaceException("Queue is full");
         }
         this.q[rear] = value;
-        this.rear = (this.rear + 1) % capacity;
-
+        this.rear = (this.rear + 1) % MAXSIZE;
         size++;
     }
 
     @Override
     public Integer pop() {
         if (empty()) {
-            throw new NoElementException("큐가 비었습니다.");
+            throw new NoElementException("Queue is empty");
         }
         int x = this.q[front];
-        this.q[front] = 0;
-        this.front = (this.front + 1) % capacity;
-
+        this.front = (this.front + 1) % MAXSIZE;
         size--;
         return x;
     }
 
     @Override
     public boolean full() {
-        return size == capacity;
+        return size == MAXSIZE;
     }
 
     @Override
@@ -63,9 +53,8 @@ public class QueueImpl implements Queue {
     @Override
     public Integer front() {
         if (empty()) {
-            throw new NoElementException("큐가 비었습니다.");
+            throw new NoElementException("Queue is empty");
         }
         return this.q[front];
     }
-
 }

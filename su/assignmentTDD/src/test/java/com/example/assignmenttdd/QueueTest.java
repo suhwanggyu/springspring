@@ -1,111 +1,88 @@
 package com.example.assignmenttdd;
 
+import com.example.assignmenttdd.exception.NoElementException;
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class QueueTest {
     private Queue q;
 
-//    @Before
-//    public void before() {
-//        this.q = new QueueImpl();
-//    }
+    @Before
+    public void before() {
+        this.q = new QueueImpl();
+    }
 
     @Test
-    public void Pop_FirstIn_FirstOut() {
-        this.q = new QueueImpl();
+    public void pop_FirstIn_FirstOut() {
         q.add(32);
         q.add(23);
-        assertThat(32).isEqualTo(q.pop());
-        assertThat(23).isEqualTo(q.pop());
+        assertThat(q.pop()).isEqualTo(32);
+        assertThat(q.pop()).isEqualTo(23);
     }
 
     @Test
-    public void Add_InsertNumsCount_ExpectedNumsCount() {
-        this.q = new QueueImpl();
-
+    public void add_InsertNumbers_InsertProperly() {
         int x = q.size();
         for (int i = 0; i < 3; i++) {
-            q.add((int) (Math.random() * 100 + 1));
+            q.add(2);
         }
         int y = q.size();
-        assertThat(x < y).isTrue();
+        assertThat(x + 3).isEqualTo(y);
     }
 
     @Test
-    public void Empty_EmptyQueue_True() {
-        this.q = new QueueImpl();
-
-        for (int i = 0; i < 100; i++) {
-            q.add((int) (Math.random() * 101 + 1));
-        }
-        for (int i = 0; i < 100; i++) {
-            q.pop();
-        }
+    public void empty_EmptyQueue_ReturnTrue() {
         assertThat(q.empty()).isTrue();
     }
 
     @Test
-    public void Empty_NotEmptyQueue_False() {
-        this.q = new QueueImpl();
-
+    public void empty_NotEmptyQueue_ReturnFalse() {
         q.add(2);
         assertThat(q.empty()).isFalse();
     }
 
 
-//    @Test
-//    public void Pop_ExecutePopWhenQIsEmpty_ThrowsNoElementException() {
-//        assertThat(NoElementException.class, () -> q.pop());
-//    }
-//
-//    @Test
-//    public void Front_ExecuteFrontWhenQIsEmpty_ThrowsNoElementException() {
-//        assertThrows(NoElementException.class, () -> q.front());
-//    }
+    @Test
+    public void pop_ExecutePopWhenQIsEmpty_ThrowsNoElementException() {
+        Assertions.assertThatThrownBy(() -> q.pop()).isInstanceOf(NoElementException.class);
+    }
 
     @Test
-    public void Full_QueueSizeIs100_True() {
-        this.q = new QueueImpl();
+    public void front_ExecuteFrontWhenQIsEmpty_ThrowsNoElementException() {
+        Assertions.assertThatThrownBy(() -> q.front()).isInstanceOf(NoElementException.class);
+    }
 
+    @Test
+    public void full_QueueSizeIs100_True() {
         for (int i = 0; i < 100; i++) {
-            q.add((int) (Math.random() * 101 + 1));
+            q.add(30);
         }
         assertThat(q.full()).isTrue();
     }
 
     @Test
-    public void Full_QueueSizeLessThan100_False() {
-        this.q = new QueueImpl();
-
-        for (int i = 0; i < 100; i++) {
-            q.add((int) (Math.random() * 101 + 1));
+    public void full_QueueSizeLessThan100_False() {
+        for (int i = 0; i < 19; i++) {
+            q.add(30);
         }
-        q.pop();
-        q.pop();
         assertThat(q.full()).isFalse();
-
     }
 
-    @Test
-    public void Front_InsertNum_FrontNumOfQueueIsSame() {
-        this.q = new QueueImpl();
 
+    @Test
+    public void front_InsertNum_FrontNumOfQueueIsSame() {
         q.add(32);
         assertThat(q.front()).isEqualTo(32);
     }
 
     @Test
-    public void Size_CountOfUsingAddMethod_CountOfElementsInQueue() {
-        this.q = new QueueImpl();
-
+    public void size_CountOfUsingAddMethod_CountOfElementsInQueue() {
         q.add(32);
         q.add(88);
         q.add(12);
         assertThat(q.size()).isEqualTo(3);
     }
-
-
 }

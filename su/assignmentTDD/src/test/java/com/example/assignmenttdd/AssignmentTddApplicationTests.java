@@ -6,7 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class AssignmentTddApplicationTests
 {
-
     @Test
     void contextLoads()
     {
