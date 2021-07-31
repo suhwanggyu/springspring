@@ -1,9 +1,10 @@
 package com.example.assign1.queue;
 
+import com.example.assign1.exception.NoElementException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MyQueueTest {
 
@@ -24,7 +25,7 @@ public class MyQueueTest {
         myQueue.add(1);
         myQueue.add(2);
 
-        assertThat(1).isEqualTo(myQueue.front());
+        assertEquals(1, myQueue.front());
     }
 
 //    @Test
@@ -40,7 +41,17 @@ public class MyQueueTest {
         myQueue.add(1);
         myQueue.add(2);
 
-        assertThat(1).isEqualTo(myQueue.pop());
+        assertEquals(1, myQueue.pop());
+    }
+
+    @Test
+    void test_Pop_2() {
+        myQueue.add(1);
+        myQueue.pop();
+
+        assertThrows(NoElementException.class, () -> {
+           myQueue.pop();
+        });
     }
 
     @Test
@@ -48,7 +59,7 @@ public class MyQueueTest {
         myQueue.add(1);
         myQueue.add(2);
 
-        assertThat(1).isEqualTo(myQueue.front());
+        assertEquals(1, myQueue.front());
     }
 
     @Test
@@ -56,7 +67,7 @@ public class MyQueueTest {
         myQueue.add(1);
         myQueue.add(2);
 
-        assertThat(2).isEqualTo(myQueue.size());
+        assertEquals(2, myQueue.size());
     }
 
     @Test
@@ -64,7 +75,8 @@ public class MyQueueTest {
         for (int i = 0; i < 100; i++) {
             myQueue.add(i);
         }
-        assertThat(myQueue.full()).isEqualTo(true);
+
+        assertEquals(myQueue.full(), true);
     }
 
     @Test
@@ -72,6 +84,6 @@ public class MyQueueTest {
         myQueue.add(1);
         myQueue.pop();
 
-        assertThat(myQueue.empty()).isEqualTo(true);
+        assertEquals(myQueue.empty(), true);
     }
 }
