@@ -21,7 +21,7 @@ public class MyQueueTest {
     }
 
     @Test
-    void test_Add() {
+    void add_InsertNumbers_ReturnFirstNumber() {
         myQueue.add(1);
         myQueue.add(2);
 
@@ -37,7 +37,7 @@ public class MyQueueTest {
 //    }
 
     @Test
-    void test_Pop() {
+    void pop_InsertNumbers_ReturnQueueFrontNumber() {
         myQueue.add(1);
         myQueue.add(2);
 
@@ -45,7 +45,7 @@ public class MyQueueTest {
     }
 
     @Test
-    void test_Pop_2() {
+    void pop_QueueIsEmpty_ExceptionThrown() {
         myQueue.add(1);
         myQueue.pop();
 
@@ -55,7 +55,7 @@ public class MyQueueTest {
     }
 
     @Test
-    void test_Front() {
+    void front_FirstNumberInQueue_IsEqual() {
         myQueue.add(1);
         myQueue.add(2);
 
@@ -63,7 +63,7 @@ public class MyQueueTest {
     }
 
     @Test
-    void test_Size() {
+    void size_QueueSize_IsEqual() {
         myQueue.add(1);
         myQueue.add(2);
 
@@ -71,7 +71,7 @@ public class MyQueueTest {
     }
 
     @Test
-    void test_Is_Full() {
+    void isFull_QueueSizeFull_True() {
         for (int i = 0; i < 100; i++) {
             myQueue.add(i);
         }
@@ -80,7 +80,7 @@ public class MyQueueTest {
     }
 
     @Test
-    void test_Is_Empty() {
+    void isEmpty_QueueSizeZero_True() {
         myQueue.add(1);
         myQueue.pop();
 
