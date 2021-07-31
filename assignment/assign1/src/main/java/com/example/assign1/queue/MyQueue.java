@@ -43,12 +43,12 @@ public class MyQueue implements Queue{
 
     @Override
     public boolean full() throws NoEnoughSpaceException {
-        return (size >= QUEUE_SIZE) ? true : false;
+        return size >= QUEUE_SIZE;
     }
 
     @Override
     public boolean empty() {
-        return (size == 0) ? true : false;
+        return size == 0;
     }
 
     @Override
