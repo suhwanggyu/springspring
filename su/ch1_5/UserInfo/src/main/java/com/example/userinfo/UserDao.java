@@ -33,7 +33,6 @@ public class UserDao
     }
 
 
-
     public User get(String id) throws ClassNotFoundException, SQLException
     {
 //        Connection c = getConnection();
@@ -58,7 +57,6 @@ public class UserDao
 
         return user;
     }
-
 
 
 }
