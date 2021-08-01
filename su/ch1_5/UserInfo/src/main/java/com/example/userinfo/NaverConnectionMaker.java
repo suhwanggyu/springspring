@@ -11,7 +11,7 @@ public class NaverConnectionMaker implements ConnectionMaker
     {
         Class.forName("com.mysql.jdbc.Driver");
         Connection c = DriverManager.getConnection(
-                "jdbc:mysql://localhost:1234/springbook", "root","6203"
+                "jdbc:mysql://localhost:1234/springbook", "root", "6203"
         );
         return c;
     }
