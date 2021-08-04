@@ -14,6 +14,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.sql.DataSource;
 
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest()
 @ActiveProfiles("local")
@@ -24,7 +28,6 @@ public class PizzaDaoTest {
 
     private Pizza pizza1;
     private Pizza pizza2;
-    private Pizza pizza3;
 
 
     @Before
@@ -39,7 +42,7 @@ public class PizzaDaoTest {
     public void get_CompareToOrderNumber_SameOrder() {
         Pizza firstOrderPizza = pizzaDao.get(1);
 
-        Assertions.assertThat(firstOrderPizza).isSameAs(pizza1);
+        assertThat(firstOrderPizza).isSameAs(pizza1);
     }
 
 
@@ -48,7 +51,19 @@ public class PizzaDaoTest {
         pizzaDao.add(pizza1);
 
         Pizza checkPizza1 = pizzaDao.get(pizza1.getOrderNumber());
-        Assertions.assertThat(checkPizza1.getPizzaNumber()).isEqualTo(pizza1.getPizzaNumber());
+        assertThat(checkPizza1.getPizzaNumber()).isEqualTo(pizza1.getPizzaNumber());
     }
+
+    @Test
+    public void getAll_CheckAllOrder_CheckSameOrders(){
+        List<Pizza> pizzas0 = pizzaDao.getAll();
+        assertThat(pizzas0.size()).isEqualTo(0);
+
+        pizzaDao.add(pizza1);
+        List<Pizza> pizzas1 = pizzaDao.getAll();
+        assertThat(pizzas1.size()).isEqualTo(1);
+    }
+
+
 
 }

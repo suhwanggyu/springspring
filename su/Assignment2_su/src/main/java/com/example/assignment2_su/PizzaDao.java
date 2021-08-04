@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 //@Repository 로 써도됨
 @Component
@@ -19,6 +20,8 @@ public class PizzaDao {
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
+
+
 
     private RowMapper<Pizza> pizzaRowMapper = new RowMapper<Pizza>() {
         @Override
@@ -45,6 +48,17 @@ public class PizzaDao {
                 new Object[]{OrderNumber},
                 this.pizzaRowMapper);
     }
+
+    public int getOrderCount() throws SQLException {
+        return this.jdbcTemplate.queryForObject("SELECT COUNT(*) FROM pizza_order", Integer.class);
+    }
+
+    public List<Pizza> getAll() {
+        return this.jdbcTemplate.query("SELECT * FROM pizza_order ORDER BY OrderNumber", this.pizzaRowMapper)
+    }
+
+
+
 
 
 }
