@@ -36,6 +36,14 @@ public class PizzaDaoTest {
     }
 
     @Test
+    public void get_CompareToOrderNumber_SameOrder() {
+        Pizza firstOrderPizza = pizzaDao.get(1);
+
+        Assertions.assertThat(firstOrderPizza).isSameAs(pizza1);
+    }
+
+
+    @Test
     public void add_InsertOrder_ThereIsTheOrderInTable() {
         pizzaDao.add(pizza1);
 

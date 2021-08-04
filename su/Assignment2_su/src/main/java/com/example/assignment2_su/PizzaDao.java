@@ -32,12 +32,18 @@ public class PizzaDao {
         }
     };
 
-    public void add(Pizza pizza) throws SQLException {
-        this.jdbcTemplate.update("insert into pizza_order(OrderNumber, pizzaNumber,orderQuantity,orderStatus) values(?,?,?,?)",
+    public void add(final Pizza pizza) throws SQLException {
+        this.jdbcTemplate.update("INSERT INTO pizza_order(OrderNumber, pizzaNumber,orderQuantity,orderStatus) VALUES(?,?,?,?)",
                 pizza.getOrderNumber()
                 , pizza.getPizzaNumber()
                 , pizza.getOrderQuantity()
                 , pizza.getOrderStatus());
+    }
+
+    public Pizza get(int OrderNumber) throws SQLException {
+        return this.jdbcTemplate.queryForObject("SELECT * FROM pizza_order WHERE OrderNumber = ?",
+                new Object[]{OrderNumber},
+                this.pizzaRowMapper);
     }
 
 
