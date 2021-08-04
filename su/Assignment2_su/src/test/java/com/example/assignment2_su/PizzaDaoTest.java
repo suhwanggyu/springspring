@@ -1,5 +1,6 @@
 package com.example.assignment2_su;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,6 +38,9 @@ public class PizzaDaoTest {
     @Test
     public void add_InsertOrder_ThereIsTheOrderInTable() {
         pizzaDao.add(pizza1);
+
+        Pizza checkPizza1 = pizzaDao.get(pizza1.getOrderNumber());
+        Assertions.assertThat(checkPizza1.getPizzaNumber()).isEqualTo(pizza1.getPizzaNumber());
     }
 
 }
