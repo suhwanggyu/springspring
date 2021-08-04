@@ -23,7 +23,6 @@ public class MyQueueTest {
     @Test
     void add_InsertNumbers_ReturnFirstNumber() {
         myQueue.add(1);
-        myQueue.add(2);
 
         assertEquals(1, myQueue.front());
     }
