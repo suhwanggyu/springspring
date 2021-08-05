@@ -31,7 +31,6 @@ public class PizzaDaoTest {
 
 
         Pizza pizza1 = ac.getBean(Pizza.class);
-        pizza1.setOrderNumber(1);
         pizza1.setPizzaNumber(1);
         pizza1.setOrderQuantity(2);
         pizza1.setOrderStatus("주문완료");

@@ -16,9 +16,11 @@ public class PizzaDao {
     private MapperClass mapperClass;
 
     public void insert(Pizza pizza) {
-        String sql = "INSERT INTO pizza_order (OrderNumber, pizzaNumber,orderQuantity,orderStatus) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO pizza_order (pizzaNumber,orderQuantity,orderStatus) VALUES(?,?,?)";
+//        String sql = "INSERT INTO pizza_order (OrderNumber, pizzaNumber,orderQuantity,orderStatus) VALUES(?,?,?,?)";
+
         jdbcTemplate.update(sql
-                ,pizza.getOrderNumber()
+//                ,pizza.getOrderNumber()
                 , pizza.getPizzaNumber()
                 , pizza.getOrderQuantity()
                 , pizza.getOrderStatus());
