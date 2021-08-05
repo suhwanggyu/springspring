@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @Component
-@ConfigurationProperties(prefix = "spring.datasource")
+//@ConfigurationProperties(prefix = "spring.datasource")
 public class Pizza {
 
     private int OrderNumber;

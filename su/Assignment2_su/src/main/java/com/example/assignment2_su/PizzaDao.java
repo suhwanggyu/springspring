@@ -4,24 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-//@Repository 로 써도됨
 @Component
 public class PizzaDao {
     private JdbcTemplate jdbcTemplate;
+    private DataSource dataSource;
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
-
-
 
     private RowMapper<Pizza> pizzaRowMapper = new RowMapper<Pizza>() {
         @Override
@@ -47,10 +45,6 @@ public class PizzaDao {
         return this.jdbcTemplate.queryForObject("SELECT * FROM pizza_order WHERE OrderNumber = ?",
                 new Object[]{OrderNumber},
                 this.pizzaRowMapper);
-    }
-
-    public int getOrderCount() throws SQLException {
-        return this.jdbcTemplate.queryForObject("SELECT COUNT(*) FROM pizza_order", Integer.class);
     }
 
     public List<Pizza> getAll() {
