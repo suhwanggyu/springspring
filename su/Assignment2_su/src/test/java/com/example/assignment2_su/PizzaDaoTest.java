@@ -1,15 +1,19 @@
 package com.example.assignment2_su;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.SQLException;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest()
@@ -28,8 +32,6 @@ public class PizzaDaoTest {
 
     @Test
     public void add_addPizzaOrder_CheckInsertThis() throws SQLException {
-
-
         Pizza pizza1 = ac.getBean(Pizza.class);
         pizza1.setPizzaNumber(1);
         pizza1.setOrderQuantity(2);
@@ -45,21 +47,27 @@ public class PizzaDaoTest {
     public void select_SelectAll_ReturnOrderList() throws SQLException {
         List<Pizza> list = pizzaDao.select();
 
-        //assertThat으로 확인하기.
         for (Pizza pizza : list) {
-            System.out.println("OrderNumber = " + pizza.getOrderNumber());
-            System.out.println("PizzaNumber = " + pizza.getPizzaNumber());
-            System.out.println("OrderQuantity = " + pizza.getOrderQuantity());
-            System.out.println("OrderStatus = " + pizza.getOrderStatus());
-            System.out.println("==================");
+            assertThat(pizza.getOrderStatus()).isEqualTo("주문접수");
         }
-
     }
 
     @Test
     public void delete_WhenOrderDeleteByUsingOrderNumber_DeleteThat() {
         pizzaDao.delete(1);
 
+    }
+
+    @Test
+    @Scheduled(fixedDelay = 3000)
+    public void test_ThreeSecondSleep_WakeUpAfterThreeSecond() {
+        System.out.println("Ta-da!");
+    }
+
+    @Test
+    @Scheduled(cron = "*/5 * * * * *")
+    public void test_RunEveryFiveSeconds_Print() {
+        System.out.println("Ta-da!");
     }
 
 
@@ -96,7 +104,6 @@ public class PizzaDaoTest {
     }
 
      */
-
 
 
 }
