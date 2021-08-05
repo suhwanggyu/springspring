@@ -2,13 +2,12 @@ package com.example.assignment2_su;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+
 
 @Getter
 @Setter
 @Component
-//@ConfigurationProperties(prefix = "spring.datasource")
 public class Pizza {
 
     private int OrderNumber;
@@ -16,8 +15,8 @@ public class Pizza {
     private int orderQuantity;
     private String orderStatus;
 
-    public Pizza(int orderNumber, int pizzaNumber, int orderQuantity, String orderStatus) {
-        OrderNumber = orderNumber;
+    public Pizza(int OrderNumber, int pizzaNumber, int orderQuantity, String orderStatus) {
+        this.OrderNumber = OrderNumber;
         this.pizzaNumber = pizzaNumber;
         this.orderQuantity = orderQuantity;
         this.orderStatus = orderStatus;

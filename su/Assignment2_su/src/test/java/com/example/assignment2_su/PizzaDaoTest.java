@@ -1,42 +1,74 @@
 package com.example.assignment2_su;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.sql.DataSource;
-
+import java.sql.SQLException;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest()
-@ActiveProfiles("local")
+//@ActiveProfiles("local")
 @EnableConfigurationProperties
 public class PizzaDaoTest {
-    @Autowired
+
+    private AnnotationConfigApplicationContext ac;
     private PizzaDao pizzaDao;
-
-    private Pizza pizza1;
-    private Pizza pizza2;
-
 
     @Before
     public void before() {
-        ApplicationContext ac = new AnnotationConfigApplicationContext(DaoFactory.class);
-
-        this.pizza1 = new Pizza(1, 1, 3, "주문접수");
-        this.pizza2 = new Pizza(2, 3, 1, "주문완료");
+        ac = new AnnotationConfigApplicationContext(DaoFactory.class);
+        pizzaDao = ac.getBean(PizzaDao.class);
     }
+
+    @Test
+    public void add_addPizzaOrder_CheckInsertThis() throws SQLException {
+
+
+        Pizza pizza1 = ac.getBean(Pizza.class);
+        pizza1.setOrderNumber(1);
+        pizza1.setPizzaNumber(1);
+        pizza1.setOrderQuantity(2);
+        pizza1.setOrderStatus("주문완료");
+
+        pizzaDao.insert(pizza1);
+
+        ac.close();
+
+    }
+
+    @Test
+    public void select_SelectAll_ReturnOrderList() throws SQLException {
+        List<Pizza> list = pizzaDao.select();
+
+        //assertThat으로 확인하기.
+        for (Pizza pizza : list) {
+            System.out.println("OrderNumber = " + pizza.getOrderNumber());
+            System.out.println("PizzaNumber = " + pizza.getPizzaNumber());
+            System.out.println("OrderQuantity = " + pizza.getOrderQuantity());
+            System.out.println("OrderStatus = " + pizza.getOrderStatus());
+            System.out.println("==================");
+        }
+
+    }
+
+    @Test
+    public void delete_WhenOrderDeleteByUsingOrderNumber_DeleteThat() {
+        pizzaDao.delete(1);
+
+    }
+
+
+
+
+
+
+    /*
 
     @Test
     public void get_CompareToOrderNumber_SameOrder() {
@@ -63,6 +95,8 @@ public class PizzaDaoTest {
         List<Pizza> pizzas1 = pizzaDao.getAll();
         assertThat(pizzas1.size()).isEqualTo(1);
     }
+
+     */
 
 
 
