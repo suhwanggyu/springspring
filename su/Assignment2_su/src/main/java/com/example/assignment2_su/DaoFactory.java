@@ -1,8 +1,6 @@
 package com.example.assignment2_su;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,43 +10,23 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
-
-//@ConfigurationProperties("spring.datasource")
-//@Getter
-//@Setter
 @Configuration
 @EnableTransactionManagement
 @ComponentScan
+@EnableConfigurationProperties(value = {Properties.class})
 public class DaoFactory {
 
-    @Bean
-    public DataSource dataSource() {
-        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-        dataSource.setDriverClass(com.mysql.cj.jdbc.Driver.class);
-        dataSource.setUrl("jdbc:mysql://localhost:1234/local_db");
-        dataSource.setUsername("root");
-        dataSource.setPassword("6203");
-
-        return dataSource;
-    }
-
-
-
     /*
-
-    private String data;
-    private String url;
-    private String name;
-    private String username;
-    private String password;
+    @Autowired
+    private Properties p;
 
     @Bean
     public DataSource dataSource() {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         dataSource.setDriverClass(com.mysql.cj.jdbc.Driver.class);
-        dataSource.setUrl(url+name);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
+        dataSource.setUrl(p.getUrl()+p.getName());
+        dataSource.setUsername(p.getUsername());
+        dataSource.setPassword(p.getPassword());
 
         return dataSource;
     }
@@ -62,6 +40,16 @@ public class DaoFactory {
         return jdbcTemplate;
     }
 
+    @Bean
+    public DataSource dataSource() {
+        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
+        dataSource.setDriverClass(com.mysql.cj.jdbc.Driver.class);
+        dataSource.setUrl("jdbc:mysql://localhost:1234/local_db");
+        dataSource.setUsername("root");
+        dataSource.setPassword("6203");
+
+        return dataSource;
+    }
 }
 
 

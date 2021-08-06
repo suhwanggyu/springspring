@@ -8,6 +8,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest()
-//@ActiveProfiles("local")
+@ActiveProfiles("local")
 @EnableConfigurationProperties
 public class PizzaDaoTest {
 
@@ -32,7 +33,7 @@ public class PizzaDaoTest {
 
     @Test
     public void add_addPizzaOrder_CheckInsertThis() throws SQLException {
-        Pizza pizza1 = ac.getBean(Pizza.class);
+        Pizza pizza1 = new Pizza();
         pizza1.setPizzaNumber(1);
         pizza1.setOrderQuantity(2);
         pizza1.setOrderStatus("주문완료");
@@ -43,6 +44,7 @@ public class PizzaDaoTest {
 
     }
 
+    /*
     @Test
     public void select_SelectAll_ReturnOrderList() throws SQLException {
         List<Pizza> list = pizzaDao.select();
@@ -51,6 +53,8 @@ public class PizzaDaoTest {
             assertThat(pizza.getOrderStatus()).isEqualTo("주문접수");
         }
     }
+
+     */
 
     @Test
     public void delete_WhenOrderDeleteByUsingOrderNumber_DeleteThat() {
@@ -65,34 +69,14 @@ public class PizzaDaoTest {
     }
 
     @Test
-    @Scheduled(cron = "*/5 * * * * *")
-    public void test_RunEveryFiveSeconds_Print() {
+    @Scheduled(cron = "0 1 * * * *")
+    public void test_RunEveryMinute_Print() {
         System.out.println("Ta-da!");
     }
 
 
 
-
-
-
-    /*
-
-    @Test
-    public void get_CompareToOrderNumber_SameOrder() {
-        Pizza firstOrderPizza = pizzaDao.get(1);
-
-        assertThat(firstOrderPizza).isSameAs(pizza1);
-    }
-
-
-    @Test
-    public void add_InsertOrder_ThereIsTheOrderInTable() {
-        pizzaDao.add(pizza1);
-
-        Pizza checkPizza1 = pizzaDao.get(pizza1.getOrderNumber());
-        assertThat(checkPizza1.getPizzaNumber()).isEqualTo(pizza1.getPizzaNumber());
-    }
-
+/*
     @Test
     public void getAll_CheckAllOrder_CheckSameOrders(){
         List<Pizza> pizzas0 = pizzaDao.getAll();

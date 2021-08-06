@@ -17,21 +17,36 @@ public class PizzaDao {
 
     public void insert(Pizza pizza) {
         String sql = "INSERT INTO pizza_order (pizzaNumber,orderQuantity,orderStatus) VALUES(?,?,?)";
-//        String sql = "INSERT INTO pizza_order (OrderNumber, pizzaNumber,orderQuantity,orderStatus) VALUES(?,?,?,?)";
 
         jdbcTemplate.update(sql
-//                ,pizza.getOrderNumber()
                 , pizza.getPizzaNumber()
                 , pizza.getOrderQuantity()
                 , pizza.getOrderStatus());
     }
 
+    /*
     public List<Pizza> select() {
         String sql = "SELECT * FROM pizza_order";
         List<Pizza> orderList = jdbcTemplate.query(sql, mapperClass);
 
         return orderList;
     }
+
+     */
+
+
+    public Pizza select(int x) {
+        String sql = "SELECT * FROM pizza_order where OrderNumber = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{x}, mapperClass);
+
+    }
+
+    public Pizza selectLastValue() {
+        String sql = "SELECT * FROM pizza_order ORDER BY OrderNumber DESC LIMIT 1";
+        return jdbcTemplate.queryForObject(sql, new Object[]{}, mapperClass);
+    }
+
+
 
     public void delete(int OrderNumber) {
         String sql = "delete from pizza_order where OrderNumber = ?";
