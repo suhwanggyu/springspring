@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 @Component
 public class MapperClass implements RowMapper<Pizza> {
+
     @Override
     public Pizza mapRow(ResultSet rs, int rowNum) throws SQLException {
         Pizza pizza = new Pizza();
@@ -15,7 +16,6 @@ public class MapperClass implements RowMapper<Pizza> {
         pizza.setPizzaNumber(rs.getInt("pizzaNumber"));
         pizza.setOrderQuantity(rs.getInt("orderQuantity"));
         pizza.setOrderStatus(rs.getString("orderStatus"));
-
         return pizza;
     }
 }

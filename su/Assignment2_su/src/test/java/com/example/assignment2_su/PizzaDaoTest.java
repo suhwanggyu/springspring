@@ -1,6 +1,5 @@
 package com.example.assignment2_su;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,17 +7,12 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.SQLException;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest()
-@ActiveProfiles("local")
+@SpringBootTest
 @EnableConfigurationProperties
 public class PizzaDaoTest {
 
@@ -37,11 +31,7 @@ public class PizzaDaoTest {
         pizza1.setPizzaNumber(1);
         pizza1.setOrderQuantity(2);
         pizza1.setOrderStatus("주문완료");
-
         pizzaDao.insert(pizza1);
-
-        ac.close();
-
     }
 
     /*
@@ -59,11 +49,10 @@ public class PizzaDaoTest {
     @Test
     public void delete_WhenOrderDeleteByUsingOrderNumber_DeleteThat() {
         pizzaDao.delete(1);
-
     }
 
     @Test
-    @Scheduled(fixedDelay = 3000)
+    @Scheduled(fixedDelay = 3000L)
     public void test_ThreeSecondSleep_WakeUpAfterThreeSecond() {
         System.out.println("Ta-da!");
     }

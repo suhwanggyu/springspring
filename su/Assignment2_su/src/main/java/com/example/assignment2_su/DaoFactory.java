@@ -1,56 +1,30 @@
 package com.example.assignment2_su;
 
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.SimpleDriverDataSource;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
 @Configuration
-@EnableTransactionManagement
-@ComponentScan
-@EnableConfigurationProperties(value = {Properties.class})
 public class DaoFactory {
 
-    /*
-    @Autowired
-    private Properties p;
-
     @Bean
+    @ConfigurationProperties(prefix = "spring.datasource.hikari")
     public DataSource dataSource() {
-        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-        dataSource.setDriverClass(com.mysql.cj.jdbc.Driver.class);
-        dataSource.setUrl(p.getUrl()+p.getName());
-        dataSource.setUsername(p.getUsername());
-        dataSource.setPassword(p.getPassword());
-
-        return dataSource;
+        return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
-
-     */
 
     @Bean
     public JdbcTemplate jdbcTemplate(DataSource dataSource) {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-
         return jdbcTemplate;
     }
-
-    @Bean
-    public DataSource dataSource() {
-        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-        dataSource.setDriverClass(com.mysql.cj.jdbc.Driver.class);
-        dataSource.setUrl("jdbc:mysql://localhost:1234/local_db");
-        dataSource.setUsername("root");
-        dataSource.setPassword("6203");
-
-        return dataSource;
-    }
 }
+
 
 
 

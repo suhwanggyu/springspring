@@ -1,19 +1,16 @@
 package com.example.assignment2_su;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class PizzaDao {
-
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
-    @Autowired
-    private MapperClass mapperClass;
+    private final JdbcTemplate jdbcTemplate;
+    private final MapperClass mapperClass;
 
     public void insert(Pizza pizza) {
         String sql = "INSERT INTO pizza_order (pizzaNumber,orderQuantity,orderStatus) VALUES(?,?,?)";
@@ -24,26 +21,16 @@ public class PizzaDao {
                 , pizza.getOrderStatus());
     }
 
-    /*
-    public List<Pizza> select() {
-        String sql = "SELECT * FROM pizza_order";
-        List<Pizza> orderList = jdbcTemplate.query(sql, mapperClass);
-
-        return orderList;
-    }
-
-     */
-
-
     public Pizza select(int x) {
         String sql = "SELECT * FROM pizza_order where OrderNumber = ?";
-        return jdbcTemplate.queryForObject(sql, new Object[]{x}, mapperClass);
+        return jdbcTemplate.queryForObject(sql, mapperClass, x);
+
 
     }
 
     public Pizza selectLastValue() {
         String sql = "SELECT * FROM pizza_order ORDER BY OrderNumber DESC LIMIT 1";
-        return jdbcTemplate.queryForObject(sql, new Object[]{}, mapperClass);
+        return jdbcTemplate.queryForObject(sql, mapperClass);
     }
 
 

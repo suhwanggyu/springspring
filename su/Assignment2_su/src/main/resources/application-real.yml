@@ -1,7 +1,7 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:1234/example?serverTimezone=UTC&characterEncoding=UTF-8
-    name: real_db
-    username: root
-    password: 6203
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:1234/real_db?serverTimezone=UTC&characterEncoding=UTF-8
+      username: root
+      password: 6203

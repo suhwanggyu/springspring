@@ -3,7 +3,7 @@ spring:
     activate:
       on-profile: local
     location: application-local.yml
-    #local칸
+
 ---
 spring:
   config:
@@ -11,4 +11,3 @@ spring:
       on-profile: real
     location: application-real.yml
 
-t: abcd
