@@ -1,2 +1,4 @@
-rootProject.name = 'toby-spring'
+rootProject.name = 'jin'
+include 'assign2-sub'
+include 'assing2-sub'
 

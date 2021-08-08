@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: real
+
+server:
+  port: 80
